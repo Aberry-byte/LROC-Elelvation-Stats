@@ -227,6 +227,6 @@ ax.scatter(X_DTM_no_ground_no_DTM, Y_DTM_no_ground_no_DTM, DTM_by_noDTM_no_groun
 ax.scatter(X_DTM_noDTM, Y_DTM_noDTM, DTM_by_noDTM_elevation, c='red', s=.5)
 ax.set_xlabel("Latitude")
 ax.set_ylabel("Longitude")
-ax.set_zlabel("Elevation difference(m)")
+ax.set_zlabel("Elevation difference (m)")
 
 plt.show()

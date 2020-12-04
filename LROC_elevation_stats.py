@@ -19,6 +19,7 @@ def append_to_array_from_file_regex(file, regex):
                              round(match_line_list.elevation(1000), 5), match_line_list.point_id_num()]
                 array.append(line_data)
                 del match_line_list
+                del line_data
     return array
 
 

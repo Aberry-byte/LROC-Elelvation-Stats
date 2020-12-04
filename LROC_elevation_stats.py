@@ -36,7 +36,7 @@ def array_elements_in_common(array_1, array_2, element_to_get):
     return common
 
 
-def dtm_array_differences_stats(array_1, array_2, element_to_get, output_file):
+def dtm_array_differences_stats(array_1, array_2, element_to_get):
     """Returns an array of the absolute differences between two arrays and a specific element and write
     statics to a file"""
     differences = np.array([])
@@ -44,20 +44,42 @@ def dtm_array_differences_stats(array_1, array_2, element_to_get, output_file):
         for iteration_2 in range(0, len(array_2)):
             if str(array_1[iteration][4]) == str(array_2[iteration_2][4]):
                 differences = np.append(differences , absolute_difference(array_1[iteration][element_to_get], array_2[iteration_2][element_to_get]))
-    print(f"for arrays, ptp, mean, and stddev follow")
-    print(differences.ptp())
-    print(differences.mean())
-    print(f"{differences.std()}\n")
-    output_file.write(f"for arrays, ptp, mean, and stddev follow\n")
-    output_file.write(f"{str(differences.ptp())}\n")
-    output_file.write(f"{str(differences.mean())}\n")
-    output_file.write(f"{str(differences.std())}\n")
     return differences
 
 
 def percent_difference(value1, value2):
     """Returns the percent difference between two numbers"""
     return round((((abs(value1 - value2)) / ((value1 + value2) / 2)) * 100), 5)
+
+
+def file_writer(array1, array2, array_name1, array_name2, output_file):
+    """Expected inputs are two numpy array to get statistics from and the names of each array and the file to write to"""
+    output_file.write(f"{str(array_name1)} by {str(array_name2)}\n")
+
+    output_file.write("Lat\n")
+    array1_by_array2_lat = dtm_array_differences_stats(array1, array2, 1)
+    output_file.write(f"\tPoint to point    : {array1_by_array2_lat.ptp()}\n")
+    output_file.write(f"\tMean              : {array1_by_array2_lat.mean()}\n")
+    output_file.write(f"\tStandard Deviation: {array1_by_array2_lat.std()}\n")
+
+    output_file.write("Long\n")
+    array1_by_array2_long = dtm_array_differences_stats(array1, array2, 2)
+    output_file.write(f"\tPoint to point    : {array1_by_array2_long.ptp()}\n")
+    output_file.write(f"\tMean              : {array1_by_array2_long.mean()}\n")
+    output_file.write(f"\tStandard Deviation: {array1_by_array2_long.std()}\n")
+
+    output_file.write("Elevation\n")
+    array1_by_array2_elevation = dtm_array_differences_stats(array1, array2, 3)
+    output_file.write(f"\tPoint to point    : {array1_by_array2_elevation.ptp()}\n")
+    output_file.write(f"\tMean              : {array1_by_array2_elevation.mean()}\n")
+    output_file.write(f"\tStandard Deviation: {array1_by_array2_elevation.std()}\n")
+
+    output_file.write("\n\n")
+
+    # clean up memory usage
+    del array1_by_array2_lat
+    del array1_by_array2_long
+    del array1_by_array2_elevation
 
 
 class MatchRegexLine:
@@ -130,6 +152,7 @@ print(f"no_ground_noDTM_array is {len(no_ground_noDTM_array)} long")
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
+print("Getting X,Y,Z values")
 # Get x, y, z values for each array
 X_no_DTM = np.array([])
 Y_no_DTM = np.array([])
@@ -176,43 +199,20 @@ ax.set_zlabel("Elevation (m)")
 plt.show()
 
 # print out data
-print("DTM by noDTM")
-print("lat")
-log_file.write("DTM by noDTM\n")
-log_file.write("lat\n")
-DTM_by_noDTM_lat = dtm_array_differences_stats(DTM_point_array, noDTM_point_array, 1, log_file)
-print("long")
-log_file.write("long\n")
-DTM_by_noDTM_long = dtm_array_differences_stats(DTM_point_array, noDTM_point_array, 2, log_file)
-print("elevation")
-log_file.write("elevation\n")
-DTM_by_noDTM_elevation = dtm_array_differences_stats(DTM_point_array, noDTM_point_array, 3, log_file)
+print("Writing to file")
+# DTM by no DTM
+file_writer(DTM_point_array, noDTM_point_array, "DTM", "no DTM", log_file)
+DTM_by_noDTM_elevation = dtm_array_differences_stats(DTM_point_array, noDTM_point_array, 3)
 
-log_file.write("\n\n")
-print("DTM by noDTM_no_ground")
-print("lat")
-log_file.write("DTM by noDTM_no_ground\n")
-log_file.write("lat\n")
-DTM_by_noDTM_no_ground_lat = dtm_array_differences_stats(DTM_point_array, no_ground_noDTM_array, 1, log_file)
-print("long")
-log_file.write("long\n")
-DTM_by_noDTM_no_ground_long = dtm_array_differences_stats(DTM_point_array, no_ground_noDTM_array, 2, log_file)
-print("elevation")
-log_file.write("elevation\n")
-DTM_by_noDTM_no_ground_elevation = dtm_array_differences_stats(DTM_point_array, no_ground_noDTM_array, 3, log_file)
 
-log_file.write("\n\n")
-print("noDTM by noDTM_no_ground")
-print("lat")
-log_file.write("noDTM by noDTM_no_ground\n")
-log_file.write("lat\n")
-noDTM_by_noDTM_no_ground_lat = dtm_array_differences_stats(noDTM_point_array, no_ground_noDTM_array, 1, log_file)
-print("long")
-log_file.write("long\n")
-noDTM_by_noDTM_no_ground_long = dtm_array_differences_stats(noDTM_point_array, no_ground_noDTM_array, 2, log_file)
-print("elevation")
-log_file.write("elevation\n")
-noDTM_by_noDTM_no_ground_elevation = dtm_array_differences_stats(noDTM_point_array, no_ground_noDTM_array, 3, log_file)
+# DTM by noDTM_no_ground
+file_writer(DTM_point_array, no_ground_noDTM_array, "DTM", "no DTM and no ground", log_file)
+DTM_by_noDTM_no_ground_elevation = dtm_array_differences_stats(DTM_point_array, no_ground_noDTM_array, 3)
+
+
+# noDTM by noDTM_no_ground
+file_writer(noDTM_point_array, no_ground_noDTM_array, "no DTM", "no DTM and no ground", log_file)
+noDTM_by_noDTM_no_ground_elevation = dtm_array_differences_stats(noDTM_point_array, no_ground_noDTM_array, 3)
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')

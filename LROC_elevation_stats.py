@@ -39,8 +39,7 @@ def array_elements_in_common(array_1, array_2, element_to_get):
 
 
 def dtm_array_differences_stats(array_1, array_2, element_to_get):
-    """Returns an array of the absolute differences between two arrays and a specific element and write
-    statics to a file"""
+    """Returns an array of the absolute differences between two arrays and a specific element"""
     differences = np.array([])
     for iteration in range(0, len(array_1)):
         for iteration_2 in range(0, len(array_2)):

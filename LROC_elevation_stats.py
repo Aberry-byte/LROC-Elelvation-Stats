@@ -190,12 +190,13 @@ for lists in no_ground_noDTM_array:
 
 
 # plot it out
-ax.scatter(X_DTM, Y_DTM, Z_DTM, c='blue', s=.5)
-ax.scatter(X_no_DTM, Y_no_DTM, Z_no_DTM, c='green', s=3)
-ax.scatter(no_X_no_DTM, no_Y_no_DTM, no_Z_no_DTM, c='red', s=.5)
+ax.scatter(X_DTM, Y_DTM, Z_DTM, label="DTM", c='blue', s=3)
+ax.scatter(X_no_DTM, Y_no_DTM, Z_no_DTM, label="no DTM", c='green', s=3)
+ax.scatter(no_X_no_DTM, no_Y_no_DTM, no_Z_no_DTM, label="no ground no DTM", c='red', s=3)
 ax.set_xlabel("Latitude")
 ax.set_ylabel("Longitude")
 ax.set_zlabel("Elevation (m)")
+ax.legend()
 
 plt.show()
 
@@ -224,10 +225,11 @@ Y_DTM_no_ground_no_DTM = array_elements_in_common(DTM_point_array, no_ground_noD
 X_DTM_noDTM = array_elements_in_common(DTM_point_array, noDTM_point_array, 1)
 Y_DTM_noDTM = array_elements_in_common(DTM_point_array, noDTM_point_array, 2)
 
-ax.scatter(X_DTM_no_ground_no_DTM, Y_DTM_no_ground_no_DTM, DTM_by_noDTM_no_ground_elevation, c='blue', s=.5)
-ax.scatter(X_DTM_noDTM, Y_DTM_noDTM, DTM_by_noDTM_elevation, c='red', s=.5)
+ax.scatter(X_DTM_no_ground_no_DTM, Y_DTM_no_ground_no_DTM, DTM_by_noDTM_no_ground_elevation, label="DTM - no ground no DTM", c='blue', s=2)
+ax.scatter(X_DTM_noDTM, Y_DTM_noDTM, DTM_by_noDTM_elevation, label="DTM - no DTM", c='red', s=2)
 ax.set_xlabel("Latitude")
 ax.set_ylabel("Longitude")
 ax.set_zlabel("Elevation difference (m)")
+ax.legend()
 
 plt.show()

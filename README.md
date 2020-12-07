@@ -1,7 +1,7 @@
 # LROC-Elelvation-Stats
 This project is about visualizing the differences in LROC mosiac control methods and returing some basic statics of the differences
 
-Currently the file can't be run without the proper input files which will be added soon
+Currently the file can't be run without the proper input files
 
 # Basic Backround 
 

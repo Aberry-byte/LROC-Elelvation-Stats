@@ -29,8 +29,8 @@ if __name__ == "__main__":
 
     no_ground_noDTM_array = esf.append_to_array_from_file_regex(no_ground_noDTM_file, control_point_regex)
 
-    print(f"noDTM_point_array is {len(noDTM_point_array)} long")
     print(f"DTM_point_array is {len(DTM_point_array)} long")
+    print(f"noDTM_point_array is {len(noDTM_point_array)} long")
     print(f"no_ground_noDTM_array is {len(no_ground_noDTM_array)} long")
 
     fig = plt.figure()

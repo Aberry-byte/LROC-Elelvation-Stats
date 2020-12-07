@@ -11,4 +11,4 @@ DTM is the highest accuracy
 
 This script will then graph all the measure points from each type out giving a visual of what the mosaic looks like. 
 Then it will find various statistical differces between the images.
-Then it will plot how a measure of my many meters each point is off from one another.
+Then it will plot a measure of how many meters each point is off from one another.

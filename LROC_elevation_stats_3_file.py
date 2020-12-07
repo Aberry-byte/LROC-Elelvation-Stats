@@ -21,7 +21,7 @@ if __name__ == "__main__":
     no_ground_noDTM_file = args.no_ground_noDTM
 
     control_point_regex = re.compile(r'[A-Za-z_]*_\d*\s*FREE.*', re.I)
-    log_file = open("log.txt", 'w')
+    log_file = open("log_3file.txt", 'w')
 
     DTM_point_array = esf.append_to_array_from_file_regex(DTM_file, control_point_regex)
 

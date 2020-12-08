@@ -71,7 +71,7 @@ if __name__ == "__main__":
     print("Writing to file")
     # DTM by no DTM
     esf.file_writer(DTM_point_array, noDTM_point_array, "DTM", "no DTM", log_file)
-    DTM_by_noDTM_elevation = esf.dtm_array_differences_stats(DTM_point_array, noDTM_point_array, 3)
+    DTM_by_noDTM_elevation = esf.array_element_differences(DTM_point_array, noDTM_point_array, 3)
 
 
     fig = plt.figure()

@@ -49,3 +49,29 @@ positional arguments:
 optional arguments:
   -h, --help       show this help message and exit
 
+
+# Elvation Stats functions
+This file contains all the functions used in the main scripts, a description of each function follows.
+
+*append_to_array_from_file_regex(file, regex)*
+
+Given a file and a regex this function will parse each matched line and take out relevent data (full_id, latitude, longitude, elevation, id_number).
+Then will return an array of every detailing every match 
+
+        an example of one of the lists in the array
+        ['grdD_00002', 19.45977657, 31.03212227, 1736598.16432, 2]
+        
+*absolute_difference(value1, value2)*
+
+This function simply returns the absolute difference between two numbers rounded to 5 decimal places
+
+*array_elements_in_common(array_1, array_2, element_to_get)*
+
+Given two arrays and a certain element, this function checks that two points have the same id number then returns an array of the element for matching points 
+
+        EX: X_DTM_noDTM = esf.array_elements_in_common(DTM_point_array, noDTM_point_array, 1) This returns the latitude for each point given that they match
+        
+        WARNING: because the latitude of two same points will never be exactly the same this will return the average between the two elements. 
+        In practice this would rarely cause any noticable differences  
+        
+        Also as such should never be used on elevation data, ONLY latitude and longitude data

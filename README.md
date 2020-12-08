@@ -19,24 +19,25 @@ usage: LROC_elevation_stats_2_file.py [-h] DTM noDTM
 Process two bundleout txt files for statistics
 
 positional arguments:
-  DTM         Bundleout txt file from being run with a dtm and ground points
+  DTM:         Bundleout txt file from being run with a dtm and ground points
               EX:ground_DTM_bundleout.txt
-  noDTM       Bundleout txt file from being run anyway chosen
+  noDTM:       Bundleout txt file from being run anyway chosen
               EX:No_ground_noDTM_bundleout.txt
 
 optional arguments:
   -h, --help  show this help message and exit
   
-  usage: LROC_elevation_stats_3_file.py [-h] DTM noDTM no_ground_noDTM
+
+usage: LROC_elevation_stats_3_file.py [-h] DTM noDTM no_ground_noDTM
 
 Process three bundleout txt files for statistics
 
 positional arguments:
-  DTM              Bundleout txt file from being run with a dtm and ground
+  DTM:              Bundleout txt file from being run with a dtm and ground
                    points EX:ground_DTM_bundleout.txt
-  noDTM            Bundleout txt file from being run without a dtm but ground
+  noDTM:            Bundleout txt file from being run without a dtm but ground
                    points EX:ground_noDTM_bundleout.txt
-  no_ground_noDTM  Bundleout txt file from being run without a dtm or ground
+  no_ground_noDTM:  Bundleout txt file from being run without a dtm or ground
                    points EX:No_ground_No_DTM_bundleout.txt
 
 optional arguments:

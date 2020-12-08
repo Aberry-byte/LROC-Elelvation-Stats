@@ -5,9 +5,9 @@ You will need bundleout text files from mosaics to run this script. If you do yo
 
 # Basic Backround 
 
-no ground no DTM is the least accurate 
-no DTM is moderatly accurate 
-DTM is the highest accuracy 
+*no ground no DTM* is the least accurate 
+*no DTM* is moderatly accurate 
+*DTM* is the highest accuracy 
 
 This script will then graph all the measure points from each type out giving a visual of what the mosaic looks like. 
 Then it will find various statistical differces between the images.

@@ -8,7 +8,7 @@ import elevation_stats_functions as esf
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description='Process three bundleout txt files for statistics')
+    parser = argparse.ArgumentParser(description='Process two bundleout txt files for statistics')
     parser.add_argument('DTM', type=str, metavar='DTM',
                         help="Bundleout txt file from being run with a dtm and ground points EX:ground_DTM_bundleout.txt")
     parser.add_argument('noDTM', type=str, metavar='noDTM',

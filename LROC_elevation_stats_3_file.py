@@ -87,17 +87,17 @@ if __name__ == "__main__":
     print("Writing to file")
     # DTM by no DTM
     esf.file_writer(DTM_point_array, noDTM_point_array, "DTM", "no DTM", log_file)
-    DTM_by_noDTM_elevation = esf.dtm_array_differences_stats(DTM_point_array, noDTM_point_array, 3)
+    DTM_by_noDTM_elevation = esf.array_element_differences(DTM_point_array, noDTM_point_array, 3)
 
 
     # DTM by noDTM_no_ground
     esf.file_writer(DTM_point_array, no_ground_noDTM_array, "DTM", "no DTM and no ground", log_file)
-    DTM_by_noDTM_no_ground_elevation = esf.dtm_array_differences_stats(DTM_point_array, no_ground_noDTM_array, 3)
+    DTM_by_noDTM_no_ground_elevation = esf.array_element_differences(DTM_point_array, no_ground_noDTM_array, 3)
 
 
     # noDTM by noDTM_no_ground
     esf.file_writer(noDTM_point_array, no_ground_noDTM_array, "no DTM", "no DTM and no ground", log_file)
-    noDTM_by_noDTM_no_ground_elevation = esf.dtm_array_differences_stats(noDTM_point_array, no_ground_noDTM_array, 3)
+    noDTM_by_noDTM_no_ground_elevation = esf.array_element_differences(noDTM_point_array, no_ground_noDTM_array, 3)
 
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')

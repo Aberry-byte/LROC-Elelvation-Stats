@@ -14,31 +14,37 @@ Then it will find various statistical differces between the images.
 Then it will plot a measure of how many meters each point is off from highest accuracy.
 
 # USAGE
+    2 files
 usage: LROC_elevation_stats_2_file.py [-h] DTM noDTM
 
 Process two bundleout txt files for statistics
 
 positional arguments:
+
   DTM:         Bundleout txt file from being run with a dtm and ground points
-              EX:ground_DTM_bundleout.txt
+              EX: ground_DTM_bundleout.txt
+              
   noDTM:       Bundleout txt file from being run anyway chosen
-              EX:No_ground_noDTM_bundleout.txt
+              EX: No_ground_noDTM_bundleout.txt
 
 optional arguments:
   -h, --help  show this help message and exit
   
-
+    3 files
 usage: LROC_elevation_stats_3_file.py [-h] DTM noDTM no_ground_noDTM
 
 Process three bundleout txt files for statistics
 
 positional arguments:
+
   DTM:              Bundleout txt file from being run with a dtm and ground
-                   points EX:ground_DTM_bundleout.txt
+                   points EX: ground_DTM_bundleout.txt
+                   
   noDTM:            Bundleout txt file from being run without a dtm but ground
-                   points EX:ground_noDTM_bundleout.txt
+                   points EX: ground_noDTM_bundleout.txt
+                   
   no_ground_noDTM:  Bundleout txt file from being run without a dtm or ground
-                   points EX:No_ground_No_DTM_bundleout.txt
+                   points EX: No_ground_No_DTM_bundleout.txt
 
 optional arguments:
   -h, --help       show this help message and exit

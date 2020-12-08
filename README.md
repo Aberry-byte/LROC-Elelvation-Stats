@@ -1,15 +1,21 @@
 # LROC-Elelvation-Stats
 This project is about visualizing the differences in LROC mosiac control methods and returing some basic statics of the differences
 
-You will need bundleout text files from mosaics to run this script. If you do you can either run it between two or three files by using the appropriate script
+You will need bundleout text files from mosaics to run this script. If you do, you can either run it between two or three files by using the appropriate script
 
 # Basic Backround 
 
-*no ground no DTM* is the least accurate 
-*no DTM* is moderatly accurate 
-*DTM* is the highest accuracy 
+In general
 
-This script will then graph all the measure points from each type out giving a visual of what the mosaic looks like. 
+*no ground no DTM* is the least accurate as it only matches the images in the X, Y plane
+
+*no DTM* is moderatly accurate as this uses 3D points to try and match up the elevations between images
+
+*DTM* is the highest accuracy as this uses Digital Terrain Models that have the most accurate points to try and match up the previous 3D to DTM points 
+
+When creating a mosaic one of these three methods can be used to adjust the mosaic for accuracy 
+
+This script will then graph measured points (points that will have a latitude, longitude, and elevation) from each type out giving a visual of what the mosaic looks like. 
 Then it will find various statistical differces between the images.
 Then it will plot a measure of how many meters each point is off from highest accuracy.
 

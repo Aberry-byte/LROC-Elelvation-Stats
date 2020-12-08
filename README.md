@@ -11,7 +11,7 @@ In general
 
 *no DTM* is moderatly accurate as this uses 3D points to try and match up the elevations between images
 
-*DTM* is the highest accuracy as this uses Digital Terrain Models that have the most accurate points to try and match up the previous 3D to DTM points 
+*DTM* is the highest accuracy as this uses Digital Terrain Models that have the most accurate points to try and match up the previous 3D points to DTM points 
 
 When creating a mosaic one of these three methods can be used to adjust the mosaic for accuracy 
 

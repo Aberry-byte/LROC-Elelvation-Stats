@@ -32,7 +32,7 @@ def array_elements_in_common(array_1, array_2, element_to_get):
     return common
 
 
-def dtm_array_differences_stats(array_1, array_2, element_to_get):
+def array_element_differences(array_1, array_2, element_to_get):
     """Returns an array of the absolute differences between two arrays and a specific element"""
     differences = np.array([])
     for iteration in range(0, len(array_1)):
@@ -52,19 +52,19 @@ def file_writer(array1, array2, array_name1, array_name2, output_file):
     output_file.write(f"{str(array_name1)} by {str(array_name2)}\n")
 
     output_file.write("Lat\n")
-    array1_by_array2_lat = dtm_array_differences_stats(array1, array2, 1)
+    array1_by_array2_lat = array_element_differences(array1, array2, 1)
     output_file.write(f"\tPoint to point    : {array1_by_array2_lat.ptp()}\n")
     output_file.write(f"\tMean              : {array1_by_array2_lat.mean()}\n")
     output_file.write(f"\tStandard Deviation: {array1_by_array2_lat.std()}\n")
 
     output_file.write("Long\n")
-    array1_by_array2_long = dtm_array_differences_stats(array1, array2, 2)
+    array1_by_array2_long = array_element_differences(array1, array2, 2)
     output_file.write(f"\tPoint to point    : {array1_by_array2_long.ptp()}\n")
     output_file.write(f"\tMean              : {array1_by_array2_long.mean()}\n")
     output_file.write(f"\tStandard Deviation: {array1_by_array2_long.std()}\n")
 
     output_file.write("Elevation\n")
-    array1_by_array2_elevation = dtm_array_differences_stats(array1, array2, 3)
+    array1_by_array2_elevation = array_element_differences(array1, array2, 3)
     output_file.write(f"\tPoint to point    : {array1_by_array2_elevation.ptp()}\n")
     output_file.write(f"\tMean              : {array1_by_array2_elevation.mean()}\n")
     output_file.write(f"\tStandard Deviation: {array1_by_array2_elevation.std()}\n")

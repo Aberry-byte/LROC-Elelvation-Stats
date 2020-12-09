@@ -20,6 +20,10 @@ if __name__ == "__main__":
     noDTM_file = args.noDTM
     no_ground_noDTM_file = args.no_ground_noDTM
 
+    DTM_array_name = str(input("What would you like the DTM array to be called? "))
+    noDTM_array_name = str(input("What would you like the no DTM array to be called? "))
+    no_ground_no_DTM_name = str(input("What would you like the No_ground_No_DTM array to be called? "))
+
     control_point_regex = re.compile(r'[A-Za-z_]*_\d*\s*FREE.*', re.I)
     log_file = open("log_3file.txt", 'w')
 
@@ -29,9 +33,9 @@ if __name__ == "__main__":
 
     no_ground_noDTM_array = esf.append_to_array_from_file_regex(no_ground_noDTM_file, control_point_regex)
 
-    print(f"DTM_point_array is {len(DTM_point_array)} long")
-    print(f"noDTM_point_array is {len(noDTM_point_array)} long")
-    print(f"no_ground_noDTM_array is {len(no_ground_noDTM_array)} long")
+    print(f"{DTM_array_name} is {len(DTM_point_array)} long")
+    print(f"{noDTM_array_name} is {len(noDTM_point_array)} long")
+    print(f"{no_ground_no_DTM_name} is {len(no_ground_noDTM_array)} long")
 
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
@@ -73,9 +77,9 @@ if __name__ == "__main__":
 
 
     # plot it out
-    ax.scatter(X_DTM, Y_DTM, Z_DTM, marker="D" , label="DTM", c='blue', s=5)
-    ax.scatter(X_no_DTM, Y_no_DTM, Z_no_DTM, marker="v", label="no DTM", c='green', s=5)
-    ax.scatter(no_X_no_DTM, no_Y_no_DTM, no_Z_no_DTM, label="no ground no DTM", c='red', s=5)
+    ax.scatter(X_DTM, Y_DTM, Z_DTM, marker="D" , label=f"{DTM_array_name}", c='blue', s=5)
+    ax.scatter(X_no_DTM, Y_no_DTM, Z_no_DTM, marker="v", label=f"{noDTM_array_name}", c='green', s=5)
+    ax.scatter(no_X_no_DTM, no_Y_no_DTM, no_Z_no_DTM, label=f"{no_ground_no_DTM_name}", c='red', s=5)
     ax.set_xlabel("Latitude")
     ax.set_ylabel("Longitude")
     ax.set_zlabel("Elevation (m)")
@@ -86,21 +90,18 @@ if __name__ == "__main__":
     # print out data
     print("Writing to file")
     # DTM by no DTM
-    esf.file_writer(DTM_point_array, noDTM_point_array, "DTM", "no DTM", log_file)
+    esf.file_writer(DTM_point_array, noDTM_point_array, f"{DTM_array_name}", f"{noDTM_array_name}", log_file)
     DTM_by_noDTM_elevation = esf.array_element_differences(DTM_point_array, noDTM_point_array, 3)
 
 
     # DTM by noDTM_no_ground
-    esf.file_writer(DTM_point_array, no_ground_noDTM_array, "DTM", "no DTM and no ground", log_file)
+    esf.file_writer(DTM_point_array, no_ground_noDTM_array, f"{DTM_array_name}", f"{no_ground_no_DTM_name}", log_file)
     DTM_by_noDTM_no_ground_elevation = esf.array_element_differences(DTM_point_array, no_ground_noDTM_array, 3)
 
 
     # noDTM by noDTM_no_ground
-    esf.file_writer(noDTM_point_array, no_ground_noDTM_array, "no DTM", "no DTM and no ground", log_file)
+    esf.file_writer(noDTM_point_array, no_ground_noDTM_array, f"{noDTM_array_name}", f"{no_ground_no_DTM_name}", log_file)
     noDTM_by_noDTM_no_ground_elevation = esf.array_element_differences(noDTM_point_array, no_ground_noDTM_array, 3)
-
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
 
     X_DTM_no_ground_no_DTM = esf.array_elements_in_common(DTM_point_array, no_ground_noDTM_array, 1)
     Y_DTM_no_ground_no_DTM = esf.array_elements_in_common(DTM_point_array, no_ground_noDTM_array, 2)
@@ -108,8 +109,48 @@ if __name__ == "__main__":
     X_DTM_noDTM = esf.array_elements_in_common(DTM_point_array, noDTM_point_array, 1)
     Y_DTM_noDTM = esf.array_elements_in_common(DTM_point_array, noDTM_point_array, 2)
 
-    ax.scatter(X_DTM_no_ground_no_DTM, Y_DTM_no_ground_no_DTM, DTM_by_noDTM_no_ground_elevation, label="DTM - no ground no DTM", c='blue', s=2)
-    ax.scatter(X_DTM_noDTM, Y_DTM_noDTM, DTM_by_noDTM_elevation, label="DTM - no DTM", c='red', s=2)
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.scatter(X_DTM_noDTM, DTM_by_noDTM_elevation,
+               label=f"{DTM_array_name} - {noDTM_array_name}", c='red', s=2)
+    ax.scatter(X_DTM_no_ground_no_DTM, DTM_by_noDTM_no_ground_elevation,
+               label=f"{DTM_array_name} - {no_ground_no_DTM_name}", c='blue', s=2)
+    ax.set_xlabel("Latitude")
+    ax.set_ylabel("Elevation Differences")
+    ax.legend()
+    plt.show()
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.scatter(Y_DTM_noDTM, DTM_by_noDTM_elevation,
+               label=f"{DTM_array_name} - {noDTM_array_name}", c='red', s=2)
+    ax.scatter(Y_DTM_no_ground_no_DTM, DTM_by_noDTM_no_ground_elevation,
+               label=f"{DTM_array_name} - {no_ground_no_DTM_name}", c='blue', s=2)
+    ax.set_xlabel("Longitude")
+    ax.set_ylabel("Elevation Differences")
+    ax.legend()
+    plt.show()
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.hist(DTM_by_noDTM_elevation, bins=15, label=f"{DTM_array_name} - {noDTM_array_name} elevation histogram")
+    ax.set_xlabel("Elevation difference (m)")
+    ax.set_ylabel("Number of instances")
+    ax.legend()
+    plt.show()
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.hist(DTM_by_noDTM_no_ground_elevation, bins=15, label=f"{DTM_array_name} - {no_ground_no_DTM_name} elevation histogram")
+    ax.set_xlabel("Elevation difference (m)")
+    ax.set_ylabel("Number of instances")
+    ax.legend()
+    plt.show()
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.scatter(X_DTM_no_ground_no_DTM, Y_DTM_no_ground_no_DTM, DTM_by_noDTM_no_ground_elevation, label=f"{DTM_array_name} - {no_ground_no_DTM_name}", c='blue', s=2)
+    ax.scatter(X_DTM_noDTM, Y_DTM_noDTM, DTM_by_noDTM_elevation, label=f"{DTM_array_name} - {noDTM_array_name}", c='red', s=2)
     ax.set_xlabel("Latitude")
     ax.set_ylabel("Longitude")
     ax.set_zlabel("Elevation difference (m)")

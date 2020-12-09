@@ -3,6 +3,12 @@ This project is about visualizing the differences in LROC mosiac control methods
 
 You will need bundleout text files from mosaics to run this script. If you do, you can either run it between two or three files by using the appropriate script
 
+#### Some words of Caution
+
+In general the 2 file version of the script should be used of the 3 file version. It runs faster and in my opinion can produce some more helpful plots.
+
+Additionally the plots do not save so either you will need to sceenshot the plots or just run the script again especially if you want the 3D plots. There is no current plan to add in a save system.  
+
 # Basic Backround 
 
 In general

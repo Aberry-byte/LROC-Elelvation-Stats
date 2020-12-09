@@ -73,9 +73,9 @@ if __name__ == "__main__":
 
 
     # plot it out
-    ax.scatter(X_DTM, Y_DTM, Z_DTM, label="DTM", c='blue', s=3)
-    ax.scatter(X_no_DTM, Y_no_DTM, Z_no_DTM, label="no DTM", c='green', s=3)
-    ax.scatter(no_X_no_DTM, no_Y_no_DTM, no_Z_no_DTM, label="no ground no DTM", c='red', s=3)
+    ax.scatter(X_DTM, Y_DTM, Z_DTM, marker="D" , label="DTM", c='blue', s=5)
+    ax.scatter(X_no_DTM, Y_no_DTM, Z_no_DTM, marker="v", label="no DTM", c='green', s=5)
+    ax.scatter(no_X_no_DTM, no_Y_no_DTM, no_Z_no_DTM, label="no ground no DTM", c='red', s=5)
     ax.set_xlabel("Latitude")
     ax.set_ylabel("Longitude")
     ax.set_zlabel("Elevation (m)")

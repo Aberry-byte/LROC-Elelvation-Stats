@@ -26,6 +26,9 @@ Then it will find various statistical differces between the images.
 Then it will plot a measure of how many meters each point is off from highest accuracy.
 
 # USAGE
+
+#### NOTE: these scripts can be any sort of bundleout files and can be put in any order these are just the best conventions 
+
 ## 2 files
 usage: LROC_elevation_stats_2_file.py [-h] DTM noDTM
 

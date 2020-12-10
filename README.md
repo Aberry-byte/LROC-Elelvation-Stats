@@ -153,7 +153,7 @@ This class is used to extract data from each line that matches the regex and is 
 
 How LROC_elevation_stats_2_file and 3_file work
 
-## Initilization steps
+#### Initilization steps
 
 First and foremost the program will take 2 or 3 command line arguments which should be the bundleout text files intented to be used. If any confusion occurs when adding in the comand line arguments use the -h argument or look at the **usage** section of this documentation.
 

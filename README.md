@@ -5,7 +5,7 @@ You will need bundleout text files from mosaics to run this script. If you do, y
 
 #### Some words of Caution
 
-In general the 2 file version of the script should be used of the 3 file version. It runs faster and in my opinion can produce some more helpful plots.
+In general the 2 file version of the script should be used over the 3 file version. It runs faster and in my opinion can produce some more helpful plots. But if needed to compare all three types at the same time it is useful.
 
 Additionally the plots do not save so either you will need to sceenshot the plots or just run the script again especially if you want the 3D plots. There is no current plan to add in a save system.  
 

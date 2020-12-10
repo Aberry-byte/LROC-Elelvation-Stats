@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.scatter(X_DTM_noDTM, DTM_by_noDTM_elevation, label="Latitude vs Elevation Differences")
+    ax.scatter(X_DTM_noDTM, DTM_by_noDTM_elevation, label=f"{DTM_array_name} - {noDTM_array_name}")
     ax.set_xlabel("Latitude")
     ax.set_ylabel("Elevation Differences")
     ax.legend()
@@ -106,7 +106,7 @@ if __name__ == "__main__":
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.scatter(Y_DTM_noDTM, DTM_by_noDTM_elevation, label="Longitude vs Elevation Differences")
+    ax.scatter(Y_DTM_noDTM, DTM_by_noDTM_elevation, label=f"{DTM_array_name} - {noDTM_array_name}")
     ax.set_xlabel("Longitude")
     ax.set_ylabel("Elevation Differences")
     ax.legend()

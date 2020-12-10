@@ -20,9 +20,9 @@ if __name__ == "__main__":
     noDTM_file = args.noDTM
     no_ground_noDTM_file = args.no_ground_noDTM
 
-    DTM_array_name = str(input("What would you like the DTM array to be called? "))
-    noDTM_array_name = str(input("What would you like the no DTM array to be called? "))
-    no_ground_no_DTM_name = str(input("What would you like the No_ground_No_DTM array to be called? "))
+    DTM_array_name = str(input(f"What would you like the {DTM_file} array to be called? "))
+    noDTM_array_name = str(input(f"What would you like the {noDTM_file} array to be called? "))
+    no_ground_no_DTM_name = str(input(f"What would you like the {no_ground_noDTM_file} array to be called? "))
 
     control_point_regex = re.compile(r'[A-Za-z_]*_\d*\s*FREE.*', re.I)
     log_file = open("log_3file.txt", 'w')
@@ -133,7 +133,7 @@ if __name__ == "__main__":
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.hist(DTM_by_noDTM_elevation, bins=15, label=f"{DTM_array_name} - {noDTM_array_name} elevation histogram")
+    ax.hist(DTM_by_noDTM_elevation, bins=20, ec="black", label=f"{DTM_array_name} - {noDTM_array_name} elevation histogram")
     ax.set_xlabel("Elevation difference (m)")
     ax.set_ylabel("Number of instances")
     ax.legend()
@@ -141,7 +141,7 @@ if __name__ == "__main__":
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
-    ax.hist(DTM_by_noDTM_no_ground_elevation, bins=15, label=f"{DTM_array_name} - {no_ground_no_DTM_name} elevation histogram")
+    ax.hist(DTM_by_noDTM_no_ground_elevation, bins=20, ec="black", label=f"{DTM_array_name} - {no_ground_no_DTM_name} elevation histogram")
     ax.set_xlabel("Elevation difference (m)")
     ax.set_ylabel("Number of instances")
     ax.legend()

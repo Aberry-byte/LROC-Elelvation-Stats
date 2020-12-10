@@ -148,3 +148,21 @@ Writes statistics given two arrays (computes point-to-point, mean, and standard 
 ## *class MatchRegexLine:*
 
 This class is used to extract data from each line that matches the regex and is how *append_to_array_from_file_regex(file, regex)* function is able to create it's arrays
+
+# Basic function of the main scripts 
+
+How LROC_elevation_stats_2_file and 3_file work
+
+## Initilization steps
+
+First and foremost the program will take 2 or 3 command line arguments which should be the bundleout text files intented to be used. If any confusion occurs when adding in the comand line arguments use the -h argument or look at the **usage** section of this documentation.
+
+Then the program will ask you what you want the arguments to be called in the graphs, you can input any name you would like.
+
+#### Math steps 
+
+Array's will be created with all relevent data from points in the bundleout text file. First a plot is made of those points for all files for a general visulization. From the arrays those the point to point, mean, and standard deviation for Latitude, Longitude, and elevation will be determined.
+
+#### Graphing steps
+
+The bulk of the program will be graphing out various histograms and scatter plots which look at the elevation differences.

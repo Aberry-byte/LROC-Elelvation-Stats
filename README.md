@@ -85,7 +85,7 @@ This function simply returns the absolute difference between two numbers rounded
 
 ## *array_elements_in_common(array_1, array_2, element_to_get)*
 
-Given two arrays and a certain element, this function checks that two points have the same id number then returns an array of the element for matching points 
+Given two arrays and a certain element, this function checks for lists in the arrays that have the same id number then returns an array of the element for matching points 
 
         EX: X_DTM_noDTM = esf.array_elements_in_common(DTM_point_array, noDTM_point_array, 1) This returns the latitude for each point given that they match
         
@@ -97,9 +97,10 @@ Given two arrays and a certain element, this function checks that two points hav
         
 ## *array_element_differences(array_1, array_2, element_to_get)*
 
-Given two arrays and a certain element, this function checks that two points have the same id number then returns an array of the difference in the elements for matching points 
+Given two arrays and a certain element, this function checks that two lists in the arrays have the same id number then returns an array of the difference in the elements for matching points 
 
         EX: DTM_by_noDTM_elevation = esf.array_element_differences(DTM_point_array, noDTM_point_array, 3)
+       
         
 
 ## *percent_difference(value1, value2)*

@@ -141,6 +141,16 @@ if __name__ == "__main__":
     plt.show()
 
     fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.scatter(X_DTM_no_ground_no_DTM, Y_DTM_no_ground_no_DTM, DTM_by_noDTM_no_ground_elevation, label=f"{DTM_array_name} - {no_ground_no_DTM_name}", c='blue', s=2)
+    ax.scatter(X_DTM_noDTM, Y_DTM_noDTM, DTM_by_noDTM_elevation, label=f"{DTM_array_name} - {noDTM_array_name}", c='red', s=2)
+    ax.set_xlabel("Latitude")
+    ax.set_ylabel("Longitude")
+    ax.set_zlabel("Elevation difference (m)")
+    ax.legend()
+    plt.show()
+
+    fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.scatter(Y_DTM_noDTM, DTM_by_noDTM_elevation,
                label=f"{DTM_array_name} - {noDTM_array_name}", c='red', s=2)

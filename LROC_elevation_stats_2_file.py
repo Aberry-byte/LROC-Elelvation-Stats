@@ -31,10 +31,6 @@ if __name__ == "__main__":
     print(f"{DTM_array_name} is {len(DTM_point_array)} long")
     print(f"{noDTM_array_name} is {len(noDTM_point_array)} long")
 
-
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
-
     print("Getting X,Y,Z values")
     # Get x, y, z values for each array
     X_no_DTM = np.array([])
@@ -61,6 +57,27 @@ if __name__ == "__main__":
 
 
     # plot it out
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.scatter(X_DTM, Z_DTM, label=f"{DTM_array_name}", c='blue', s=3)
+    ax.scatter(X_no_DTM, Z_no_DTM, label=f"{noDTM_array_name}", c='red', s=3)
+    ax.set_xlabel("Latitude")
+    ax.set_ylabel("Elevation")
+    ax.legend()
+    plt.show()
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.scatter(Y_DTM, Z_DTM, label=f"{DTM_array_name}", c='blue', s=3)
+    ax.scatter(Y_no_DTM, Z_no_DTM, label=f"{noDTM_array_name}", c='red', s=3)
+    ax.set_xlabel("Longitude")
+    ax.set_ylabel("Elevation")
+    ax.legend()
+    plt.show()
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
     ax.scatter(X_DTM, Y_DTM, Z_DTM, label=f"{DTM_array_name}", c='blue', s=3)
     ax.scatter(X_no_DTM, Y_no_DTM, Z_no_DTM, label=f"{noDTM_array_name}", c='red', s=3)
     ax.set_xlabel("Latitude")
@@ -96,19 +113,19 @@ if __name__ == "__main__":
     plt.show()
 
     fig = plt.figure()
-    ax = fig.add_subplot(111)
-    ax.hist(DTM_by_noDTM_elevation, bins=20, ec="black", label=f"{DTM_array_name} - {noDTM_array_name} elevation histogram")
-    ax.set_xlabel("Elevation difference (m)")
-    ax.set_ylabel("Number of instances")
-    ax.legend()
-    plt.show()
-
-    fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     ax.scatter(X_DTM_noDTM, Y_DTM_noDTM, DTM_by_noDTM_elevation, label=f"{DTM_array_name} - {noDTM_array_name} "
                                                                        f"elevation differences", c='red', s=2)
     ax.set_xlabel("Latitude")
     ax.set_ylabel("Longitude")
     ax.set_zlabel("Elevation difference (m)")
+    ax.legend()
+    plt.show()
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.hist(DTM_by_noDTM_elevation, bins=20, ec="black", label=f"{DTM_array_name} - {noDTM_array_name} elevation histogram")
+    ax.set_xlabel("Elevation difference (m)")
+    ax.set_ylabel("Number of instances")
     ax.legend()
     plt.show()

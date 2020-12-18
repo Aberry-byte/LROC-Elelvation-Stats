@@ -162,7 +162,7 @@ Then the program will ask you what you want the arguments to be called in the gr
 
 #### Math steps 
 
-Array's will be created with all relevent data from points in the bundleout text file. First a plot is made of those points for all files for a general visulization. From the arrays those the point to point, mean, and standard deviation for Latitude, Longitude, and elevation will be determined.
+Array's will be created with all relevent data from points in the bundleout text file. First a plot is made of those points for all files for a general visulization. From those arrays the point to point, mean, and standard deviation for Latitude, Longitude, and elevation will be determined.
 
 #### Graphing steps
 
